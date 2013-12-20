@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="charset" value="utf-8" />
+        <title>WebSpeechShim - Demo</title>
+        <script src="WebSpeechShim.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', function(){
+            
+                document.getElementById('pause').addEventListener('click', function(){
+                   
+                    speechSynthesis.pause();   
+                    
+                });
+                
+                document.getElementById('resume').addEventListener('click', function(){
+                   
+                    speechSynthesis.resume();   
+                    
+                });
+                
+                document.getElementById('cancel').addEventListener('click', function(){
+                   
+                    speechSynthesis.cancel();   
+                    
+                });
+                
+                document.getElementById('speak').addEventListener('click', function(){
+                 
+                    var text = document.getElementById('synthesis').value;
+                    
+                    var utterance = new SpeechSynthesisUtterance( text );
+                    
+                    speechSynthesis.speak( utterance);
+                 
+                });
+            
+            });
+        </script>
+        <style>
+            textarea {
+                display : block;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <textarea id="synthesis">Hello, World!</textarea>
+        <button id="speak">Speak</button>
+        <button id="pause">Pause</button>
+        <button id="resume">Resume</button>
+        <button id="cancel">Cancel</button>
+    </body>
+</html>
